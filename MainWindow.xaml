@@ -1,0 +1,31 @@
+﻿<Window x:Class="NETD3202_RyanClayson_Lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NETD3202_RyanClayson_Lab2"
+        mc:Ignorable="d"
+        Title="Midsize LLP" Height="450" Width="800">
+    <Grid>
+      <!-- Column Definitions-->
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="300"/>
+        <ColumnDefinition Width=" *"/>
+      </Grid.ColumnDefinitions>
+      <!-- Start of Stack Panel-->
+      <StackPanel Grid.Column="0" Margin="25" Orientation="Vertical">
+        <!--Stack Panel. Shows Listview Contents below-->
+        <ListView SelectionChanged="SettingsListViewSelectionChanged">
+          <ListViewItem x:Name ="lsvItLendOut"  Content="Lend Out" Height="50" />
+          <ListViewItem x:Name ="lsvItViewLendOut"  Content="View Lend Out" Height="50"/>
+          <ListViewItem x:Name ="lsvItEmployeeSearch" Content="Search" Height="50"/>
+        </ListView>
+      </StackPanel>
+      <!--Start of Second Grid-->
+      <Grid Grid.Column="1" Background="White" x:Name="SettingsContentPanel">
+      </Grid>
+      <!--End of second grid-->
+    </Grid>
+  <!--End of first grid-->
+</Window>
+<!--End of Window-->
