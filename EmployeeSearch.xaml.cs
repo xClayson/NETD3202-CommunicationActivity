@@ -34,22 +34,28 @@ namespace NETD3202_RyanClayson_Lab2
             if (txtSearchEmployee.Text != string.Empty && int.TryParse(txtSearchEmployee.Text, out employeeId))
             {
                 string connect_string = Properties.Settings.Default.connect_string;
-
+                //Creates a new connection
                 SqlConnection cn = new SqlConnection(connect_string);
+                //Opens a connection
                 cn.Open();
 
+                //Queries to see if employee id entered matches one in the database
                 string selectionQuery = "SELECT * FROM Equipment WHERE empID =" + employeeId;
-
+                //Creates command and passes the SQLCommand method
                 SqlCommand command = new SqlCommand(selectionQuery, cn);
+                //Used to retrieve data and populates table
                 SqlDataAdapter sda = new SqlDataAdapter(command);
+                //Links to the Equipment database created
                 DataTable dt = new DataTable("Equipment");
 
                 sda.Fill(dt);
                 int searchEmployeeId = dt.Rows.Count;
+                //if employee id matches, shows record
                 if (searchEmployeeId > 0)
                 {
                     searchEmployeeGrid.ItemsSource = dt.DefaultView;
                 }
+                //If id does not match records. Display's error
                 else
                 {
                     MessageBox.Show("Employee ID is not found. Please Try Again.");
